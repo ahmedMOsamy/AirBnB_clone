@@ -34,20 +34,20 @@ class test_for_base_model(unittest.TestCase):
 
     def test_attr_none(self):
         """None attribute."""
-        object_test = BaseModel(None)
-        self.assertTrue(hasattr(object_test, "id"))
-        self.assertTrue(hasattr(object_test, "created_at"))
-        self.assertTrue(hasattr(object_test, "updated_at"))
+        ob_test = BaseModel(None)
+        self.assertTrue(hasattr(ob_test, "id"))
+        self.assertTrue(hasattr(ob_test, "created_at"))
+        self.assertTrue(hasattr(ob_test, "updated_at"))
 
     def test_kwargs_constructor_2(self):
         """ check id with data """
         dictonary = {'score': 100}
 
-        object_test = BaseModel(**dictonary)
-        self.assertTrue(hasattr(object_test, 'id'))
-        self.assertTrue(hasattr(object_test, 'created_at'))
-        self.assertTrue(hasattr(object_test, 'updated_at'))
-        self.assertTrue(hasattr(object_test, 'score'))
+        ob_test = BaseModel(**dictonary)
+        self.assertTrue(hasattr(ob_test, 'id'))
+        self.assertTrue(hasattr(ob_test, 'created_at'))
+        self.assertTrue(hasattr(ob_test, 'updated_at'))
+        self.assertTrue(hasattr(ob_test, 'score'))
 
     def test_str(self):
         """ Test string """
@@ -58,19 +58,19 @@ class test_for_base_model(unittest.TestCase):
                      'score': 100
                      }
 
-        object_test = BaseModel(**dictonary)
-        out = "[{}] ({}) {}\n".format(type(object_test).__name__, object_test.id, object_test.__dict__)
+        ob_test = BaseModel(**dictonary)
+        out = "[{}] ({}) {}\n".format(type(ob_test).__name__, ob_test.id, ob_test.__dict__)
 
     def test_to_dict(self):
         """ check dict """
-        object_test = BaseModel(score=300)
-        n_dict = object_test.to_dict()
+        ob_test = BaseModel(score=300)
+        n_dict = ob_test.to_dict()
 
-        self.assertEqual(n_dict['id'], object_test.id)
+        self.assertEqual(n_dict['id'], ob_test.id)
         self.assertEqual(n_dict['score'], 300)
         self.assertEqual(n_dict['__class__'], 'BaseModel')
-        self.assertEqual(n_dict['created_at'], object_test.created_at.isoformat())
-        self.assertEqual(n_dict['updated_at'], object_test.updated_at.isoformat())
+        self.assertEqual(n_dict['created_at'], ob_test.created_at.isoformat())
+        self.assertEqual(n_dict['updated_at'], ob_test.updated_at.isoformat())
 
         self.assertEqual(type(n_dict['created_at']), str)
         self.assertEqual(type(n_dict['created_at']), str)
